@@ -22,8 +22,6 @@
 <span>{{msg}}</span>
 ```
 
-<br>
-
 ## v-html
 Updates the element's **innerHTML**. 
 >**NB!** Risc of Cross Site Scripting(XSS) -- injection of malicious HTML that causes inintended bahavior
@@ -36,16 +34,12 @@ html: <a href="https://google.com">Google</a>
 <div v-html="html"></div>
 ```
 
-<br>
-
 ## v-show
 Toggles the element's display CSS property based on the truthy-ness of the expression value.
 ```html
 <h1 v-show="ok">Hello!</h1>
 ```
 >**NB!** Expensive load - cheap toggle
-
-<br>
 
 ## v-if, v-else, v-else-if
 Conditionally render the element based on the truthy-ness of the expression value. The element and its contained directives / components are *destroyed* and re-constructed during toggles, which makes toggle expensive.
@@ -65,8 +59,6 @@ Conditionally render the element based on the truthy-ness of the expression valu
 ```
 >**NB!** Cheap on load because it's **lazy**: if the condition is false on initial render, it will not do anything - the conditional block won't be rendered until the condition becomes true for the first time.
 
-<br>
-
 ## v-for
 ```html
 <div v-for="item in items" :key="item.id">
@@ -80,12 +72,8 @@ Alternatively:
 <div v-for="(value, name, index) in object"></div>
 ```
 
-<br>
-
 ## v-on (@)
 Attaches an **event listener** to the element. The usage would be `v-on:click="methodName"` or with the shortcut, `@click="methodName"`.
-
-<br>
 
 **Modifiers:**
 
@@ -109,8 +97,6 @@ Attaches an **event listener** to the element. The usage would be `v-on:click="m
 
 `.passive` - attaches a DOM event with { passive: true }.
 
-<br>
-
 **Key Aliases**
 
 `<input @keyup.enter="submit" />`
@@ -131,8 +117,6 @@ Attaches an **event listener** to the element. The usage would be `v-on:click="m
 
 `.right`
 
-<br>
-
 **System Modifier Keys**
 
 You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:
@@ -144,8 +128,6 @@ You can use the following modifiers to trigger mouse or keyboard event listeners
 `.shift`
 
 `.meta`
-
-<br>
 
 ## v-bind (:)
 Dynamically binds one or more **attributes**, or a component prop to an expression.
@@ -168,7 +150,6 @@ Dynamically binds one or more **attributes**, or a component prop to an expressi
 <div :style="{ fontSize: size + 'px' }"></div>
 <div :style="[styleObjectA, styleObjectB]"></div>
 ```
-<br>
 
 ## v-model
 Creates a **two-way binding** on a **form input** element or a component.
@@ -189,7 +170,6 @@ Creates a **two-way binding** on a **form input** element or a component.
 ```html
 <input v-model.number.lazy.trim="age" placeholder="Enter your age">
 ```
-<br>
 
 ## v-cloak
 This directive waits for Vue to mount itself, and the moment it does, it removes itself.
@@ -201,8 +181,6 @@ Combined with CSS rules such as `[v-cloak] { display: none }`, this directive ca
   {{ message }}
 </div>
 ```
-
-<br>
 
 ## v-once
 
@@ -223,7 +201,6 @@ Render the element and component **once** only. On subsequent re-renders, the el
   <li v-for="i in list" v-once>{{i}}</li>
 </ul>
 ```
-<br>
 
 ## :is
 

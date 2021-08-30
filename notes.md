@@ -1,18 +1,3 @@
-- [Directives](#directives)
-  - [v-text](#v-text)
-  - [v-html](#v-html)
-  - [v-show](#v-show)
-  - [v-if, v-else, v-else-if](#v-if-v-else-v-else-if)
-  - [v-for](#v-for)
-  - [v-on (@)](#v-on-)
-  - [v-bind (:)](#v-bind-)
-  - [v-model](#v-model)
-  - [v-cloak](#v-cloak)
-  - [v-once](#v-once)
-  - [:is](#is)
-
-<br>
-
 # Directives
 
 ## v-text

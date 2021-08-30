@@ -1,5 +1,5 @@
 <template>
-  <h2>Event# {{ id }}</h2>
+  <!-- <h2>Event# {{ id }}</h2> -->
   <!-- OR -->
   <!-- <h2>Event# {{ $route.params.id }}</h2> -->
   <!-- NOT recommended because it makes component highly coupled to the route -->
@@ -9,8 +9,15 @@
 
   <div v-if="event">
     <h1>{{ event.title }}</h1>
-    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-    <p>{{ event.description }}</p>
+
+    <div id="nav">
+      <router-link :to="{ name: 'EventDetails' }">Details</router-link>
+      |
+      <router-link :to="{ name: 'EventRegister' }">Register</router-link>
+      |
+      <router-link :to="{ name: 'EventEdit' }">Edit</router-link>
+    </div>
+    <router-view :event="event" />
   </div>
 </template>
 
@@ -32,12 +39,10 @@ export default {
         console.log(error)
       })
   },
-  computed: {
-    page() {
-      return parseInt(this.$route.query.page) || 1 // code to access query parameter e.g. https://page/events?page=4
-    },
-  },
+  //   computed: {
+  //     page() {
+  //       return parseInt(this.$route.query.page) || 1 // code to access query parameter e.g. https://page/events?page=4
+  //     },
+  //   },
 }
 </script>
-
-<style></style>

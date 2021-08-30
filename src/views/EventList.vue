@@ -1,6 +1,6 @@
 <template>
   <h1>Events For Good</h1>
-  <div v-if="showExtra">Extra stuff!</div>
+  <!-- <div v-if="showExtra">Extra stuff!</div> -->
   <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <div class="pagination">
@@ -50,8 +50,8 @@ export default {
           this.events = res.data
           this.totalEvents = res.headers['x-total-count']
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
+          this.$route.push({ name: 'NetworkError' })
         })
     })
   },

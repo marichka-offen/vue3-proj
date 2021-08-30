@@ -1,10 +1,19 @@
 <template>
+  <div id="flashMessage" v-if="GStore.flashMessage">
+    {{ GStore.flashMessage }}
+  </div>
   <div id="nav">
     <router-link :to="{ name: 'EventList' }">Events</router-link> |
     <router-link :to="{ name: 'About' }">About</router-link>
   </div>
   <router-view />
 </template>
+
+<script>
+export default {
+  inject: ['GStore'],
+}
+</script>
 
 <style>
 #app {
@@ -31,43 +40,24 @@
 h4 {
   font-size: 20px;
 }
+
+@keyframes yellowfade {
+  from {
+    background: yellow;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+#flashMessage {
+  animation-name: yellowfade;
+  animation-duration: 3s;
+}
 </style>
 
 <!-- 
-    LIFECYCLE
-    Vue.createApp() -- before lifecycle began
-
-    -beforeCreate- lifecycle hook -- no access to data yet
-
-    Initializing of data and methods
-
-    -created- lifecycle hook --before data mounted; we have access to data, but it's not rendered yet
-
-    Template is compiled
-
-    -beforeMount- lifecycle hook
-
-    Replace #app with compiled template
-
-    -mounted- lifecycle hook -- have access to rendered template
-
-    Vue watches for data changes
-
-    -beforeUpdate- lifecycle hook -- triggers after data updated, but not yet applied to the template
-
-    Apply changes to template
-
-    -updated- lifecycle hook -- triggers when template is updated, but not yet mounted
-
-    (( -beforeUpdate- and -updated- mainly used for debugging, DO NOT use for applying changes for the data. Use COMPUTED and WATCHERS instead ))
-
-    -mounted- back to it again
-
-    -vm.unmount- -- destroy the Vue instance
-
-    -beforeUnmount- lifecycle hook -- triggers before the instance is destroyed, it is still fully functional and present on the page
-
-    Instance destroyed
-
-    -beforeUnmount- lifecycle hook -- everything is gone and inaccessible
+   
  -->
+
+<!-- Reactive means when obj is updated, the Component is re-rendered -->

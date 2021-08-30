@@ -7,10 +7,13 @@ const routes = [
   {
     path: '/',
     name: 'EventList',
+    props: route => ({ page: parseInt(route.query.page) || 1}),
+ // props: { showExtra: true }, // Props Object Mode used to configure component from router
+ // props: (route) => ({ showExtra: route.query.e }) // Object Function Mode -- for https://page/?e = true
     component: EventList
   },
   {
-    path: '/event/:id',
+    path: '/event/:id', // to access "id" inside of a component
     name: 'EventDetails',
     props: true,
     component: EventDetails

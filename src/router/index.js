@@ -16,7 +16,7 @@ const routes = [
     component: EventList
   },
   {
-    path: '/event/:id', // to access "id" inside of a component
+    path: '/events/:id', // to access "id" inside of a component
     name: 'EventLayout',
     props: true,
     component: EventLayout,
@@ -37,11 +37,43 @@ const routes = [
             component: EventEdit
         }
     ]
+    },
+// ONE WAY TO REDIRECT
+//   {
+//     path: '/event/:id',
+//     redirect: () => {
+//         return { name: 'EventDetails'}
+//     },
+//     children: [
+//         {
+//             path: 'register', 
+//             redirect: () => {
+//                 return { name: 'EventRegister'}
+//             } 
+//         },
+//         {
+//             path: 'edit', 
+//             redirect: () => {
+//                 return { name: 'EventEdit'}
+//             }
+//         }
+//     ]
+//   },
+  
+// ANOTHER WAY
+  {
+      path: '/event/:afterEvent(.*)',
+      redirect: to => { return { path: '/events/' + to.params.afterEvent }}
   },
   {
-    path: '/about',
+    path: '/about-us',
     name: 'About',
-    component: About
+    component: About,
+    alias: '/about' // not good for SEO, can be penilized by Google for repeating content
+  },
+  {
+    path: '/about', // redirect
+    redirect: {name: 'About'}
   }
 ]
 

@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "id": 123,
+      "category": "animal welfare",
+      "title": "Cat Adoption Day",
+      "description": "Find your new feline friend at this event.",
+      "location": "Meow Town",
+      "date": "January 28, 2022",
+      "time": "12:00",
+      "organizer": "Kat Laydee"
+    },
+    {
+      "id": 456,
+      "category": "food",
+      "title": "Community Gardening",
+      "description": "Join us as we tend to the community edible plants.",
+      "location": "Flora City",
+      "date": "March 14, 2022",
+      "time": "10:00",
+      "organizer": "Fern Pollin"
+    },
+    {
+      "id": 789,
+      "category": "sustainability",
+      "title": "Beach Cleanup",
+      "description": "Help pick up trash along the shore.",
+      "location": "Playa Del Carmen",
+      "date": "July 22, 2022",
+      "time": "11:00",
+      "organizer": "Carey Wales"
+    },
+    {
+      "id": "f3ee3762-9228-45a9-b80f-8750aa144f54",
+      "category": "nature",
+      "title": "Horse brushing",
+      "description": "Lets brush some horses",
+      "location": "New York",
+      "date": "August 13",
+      "time": "12pm",
+      "organizer": "Marichka"
+    },
+    {
+      "id": "89f33f69-e6b8-490b-aeb0-a07a52839872",
+      "category": "education",
+      "title": "Studdy buddy",
+      "description": "Let's study together",
+      "location": "Library",
+      "date": "07/05/2021",
+      "time": "11AM",
+      "organizer": "Marichka"
+    }
+  ]
+}

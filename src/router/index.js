@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import EventList from '../views/EventList.vue'
 import EventLayout from '../views/event/Layout.vue'
 import EventDetails from '../views/event/Details.vue'
+import EventCreate from '../views/event/Create.vue'
 import EventRegister from '../views/event/Register.vue'
 import EventEdit from '../views/event/Edit.vue'
 import About from '../views/About.vue'
@@ -16,6 +17,11 @@ const routes = [
         // props: { showExtra: true }, // Props Object Mode used to configure component from router
         // props: (route) => ({ showExtra: route.query.e }) // Object Function Mode -- for https://page/?e = true
         component: EventList,
+    },
+    {
+        path: '/create',
+        name: 'EventCreate',
+        component: EventCreate,
     },
     {
         path: '/events/:id', // to access "id" inside of a component

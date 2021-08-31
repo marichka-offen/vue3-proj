@@ -22,36 +22,28 @@
 </template>
 
 <script>
-import EventService from '@/services/EventService.js'
 export default {
   props: ['id'],
-  data() {
-    return {
-      event: null,
-    }
-  },
   created() {
-    EventService.getEvent(this.id)
-      .then((response) => {
-        this.event = response.data
-      })
-      .catch((error) => {
-        if (error.response && error.response.status == 404) {
-          // if the event does not exist, load 404
-          this.$router.push({
-            name: '404Resource',
-            params: { resource: 'event' },
-          })
-        } else {
-          // otherwise assume network error
-          this.$router.push({ name: 'NetworkError' })
-        }
-      })
+    this.$store.dispatch('getEvent', this.id).catch((error) => {
+      if (error.response && error.response.status == 404) {
+        // if the event does not exist, load 404
+        this.$router.push({
+          name: '404Resource',
+          params: { resource: 'event' },
+        })
+      } else {
+        // otherwise assume network error
+        this.$router.push({ name: 'NetworkError' })
+      }
+    })
   },
-  //   computed: {
-  //     page() {
-  //       return parseInt(this.$route.query.page) || 1 // code to access query parameter e.g. https://page/events?page=4
-  //     },
-  //   },
+  computed: {
+    event() {
+      return this.$store.state.event
+    }, //     page() {
+    //       return parseInt(this.$route.query.page) || 1 // code to access query parameter e.g. https://page/events?page=4
+    //     },
+  },
 }
 </script>

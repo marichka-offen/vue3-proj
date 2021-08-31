@@ -16,7 +16,7 @@
         id="page-next"
         :to="{ name: 'EventList', query: { page: page + 1 } }"
         rel="next"
-        v-if="hasNextPage"
+        v-if="true"
         >Next &#62;</router-link
       >
     </div>
@@ -26,7 +26,6 @@
 <script>
 // @ is an alias to /src
 import EventCard from '@/components/EventCard.vue'
-import EventService from '@/services/EventService.js'
 import { watchEffect } from 'vue' // new Vue3 feature
 
 export default {
@@ -35,29 +34,32 @@ export default {
   components: {
     EventCard,
   },
-  data() {
-    return {
-      events: null,
-      totalEvents: 0,
-    }
-  },
+  //   data() {
+  //     return {
+  //       headers: 0,
+  //     }
+  //   },
   created() {
     // before data mounted; we have access to data, but it's not rendered yet
     watchEffect(() => {
-      this.events = null
-      EventService.getEvents(2, this.page) // # of events + page #
-        .then((res) => {
-          this.events = res.data
-          this.totalEvents = res.headers['x-total-count']
-        })
-        .catch(() => {
-          this.$route.push({ name: 'NetworkError' })
-        })
+      let payload = { events: this.events, limit: 2, page: this.page }
+      this.$store.dispatch('getEvents', payload)
     })
   },
+  //   methods: {
+  //     getHeadersCount() {
+  //       this.headers = this.headersCount
+  //     },
+  //   },
   computed: {
+    events() {
+      return this.$store.state.events
+    },
+    // headers() {
+    //   return this.$store.state.headers['x-total-count']
+    // },
     hasNextPage() {
-      return this.page < this.totalEvents / this.page ? true : false
+      return this.page < this.headers / this.page ? true : false
     },
   },
 }
